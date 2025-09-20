@@ -13,6 +13,9 @@ class Shape3DDataset(Dataset):
         # 데이터셋의 특성 상 h5 파일 구조는 이렇게 불러온 것만으로는 참조(handle) 상태에 해당하기 때문에
         # 메모리 걱정 없이 이렇게 올려두었음.
         self.dataset = h5py.File(self.root, 'r')
+        self.images = self.dataset['images'][:]  # 전체 읽어오기
+        self.labels = self.dataset['labels'][:]
+
 
         data_num = len(self.dataset['images'])
         
@@ -42,8 +45,10 @@ class Shape3DDataset(Dataset):
 
     def __getitem__(self, idx):
         # label = generative factor
-        image = self.dataset['images'][self.data_li[idx]]
-        label = self.dataset['labels'][self.data_li[idx]]
+        # image = self.dataset['images'][self.data_li[idx]]
+        # label = self.dataset['labels'][self.data_li[idx]]
+        image = self.images[self.data_li[idx]]
+        label = self.labels[self.data_li[idx]]
         
         # Image preprocessing
         image = image.astype(np.float32) / 255.
@@ -96,3 +101,14 @@ class Shape3DDataset(Dataset):
 # ds = Shape3DDataset()
 # image, label = ds[0]
 # print(image.shape)
+
+from torch.utils.data import DataLoader
+import time
+ds = Shape3DDataset()
+dl = DataLoader(ds, shuffle=True, batch_size=32, drop_last=True, num_workers=16)
+
+start_time = time.time()
+next(iter(dl))
+elapsed_time = time.time() - start_time
+
+print(elapsed_time)

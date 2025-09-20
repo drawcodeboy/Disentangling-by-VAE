@@ -21,10 +21,10 @@ class VAE(nn.Module):
         self.decoder = Decoder(latent = self.latent)
 
     def forward(self, x):
-        z, mu, std = self.encoder(x)
+        z, mu, log_var = self.encoder(x)
         
         x = self.decoder(z)
-        return x, z, mu, std
+        return x, z, mu, log_var
 
     def sample(self, num_samples, device):
         z = torch.randn((num_samples, self.latent)).to(device)

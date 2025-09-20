@@ -6,3 +6,4 @@ torch==2.7.1
 
 pympler==1.1
 einops==0.8.1
+pyyaml==0.6.2
