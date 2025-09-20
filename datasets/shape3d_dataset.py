@@ -1,6 +1,8 @@
+import torch
 from torch.utils.data import Dataset
 import h5py
 import numpy as np
+from einops import rearrange
 
 class Shape3DDataset(Dataset):
     def __init__(self, 
@@ -46,6 +48,7 @@ class Shape3DDataset(Dataset):
         # Image preprocessing
         image = image.astype(np.float32) / 255.
         image = torch.tensor(image)
+        image = rearrange(image, 'h w c -> c h w')
         
         # generative factor에 대해 disentanglement 같은 metric을 쓴다면, regressor가 필요하다.
         # regressor가 y scale에 큰 영향을 받지는 않겠다만, generative factor의 스케일을 통일 해두어서 나쁠 건 없을 거 같다.
@@ -80,7 +83,7 @@ class Shape3DDataset(Dataset):
 # ds = Shape3DDataset()
 # print(ds[0][1])
 
-# Check dataset
+# Check dataset size
 # ds = Shape3DDataset(mode='train')
 # train_len = len(ds)
 # ds = Shape3DDataset(mode='val')
@@ -88,3 +91,8 @@ class Shape3DDataset(Dataset):
 # ds = Shape3DDataset(mode='test')
 # test_len = len(ds)
 # print(train_len + val_len + test_len)
+
+# Check dataset image size
+# ds = Shape3DDataset()
+# image, label = ds[0]
+# print(image.shape)
