@@ -3,7 +3,7 @@
 ## Environment
 * Python==3.12.4
 ## Temporary Result Table
-'''
+```
 VAE
 ========RESULT========
 DCI: 0.21746789 (4등)
@@ -23,4 +23,4 @@ BetaVO-VAE (Ours)
 ========RESULT========
 DCI: 0.64141778 (2등)
 MAE: 0.28058973 (1등)
-'''
+```
