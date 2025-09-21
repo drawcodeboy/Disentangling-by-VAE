@@ -88,9 +88,9 @@ class Shape3DDataset(Dataset):
 # print(train_len + val_len + test_len)
 
 # Check dataset image size
-ds = Shape3DDataset()
-image, label = ds[0]
-print(image.shape)
+# ds = Shape3DDataset()
+# image, label = ds[0]
+# print(image.shape)
 
 # from torch.utils.data import DataLoader
 # import time

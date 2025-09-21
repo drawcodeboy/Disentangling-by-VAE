@@ -1,0 +1,26 @@
+title: Test VAE / 3DShapes
+
+device: &device cuda:0
+parallel: false
+
+task:
+  object: train_vae
+
+data:
+  test:
+    name: shape3d
+    root: data/3dshapes
+    mode: test
+
+model:
+  name: BetaVAE
+  latent: 6
+  img_size: [3, 64, 64]
+  beta: 20.0
+
+hyperparameters:
+  batch_size: 32
+
+save:
+  weights_path: saved/weights
+  weights_filename: beta_vae.3dshapes.epochs_035.pth
