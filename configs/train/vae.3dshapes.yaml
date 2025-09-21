@@ -9,11 +9,11 @@ task:
 data:
   train:
     name: shape3d
-    root: data/3dshapes.h5
+    root: data/3dshapes
     mode: train
   val:
     name: shape3d
-    root: data/3dshapes.h5
+    root: data/3dshapes
     mode: val
 
 model:
