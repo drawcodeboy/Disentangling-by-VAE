@@ -18,7 +18,7 @@ model:
   img_size: [3, 64, 64]
   beta: 1.0 # Vanila VAE
   latent_vec_dim: 128
-  orth_coef: 4.0
+  orth_coef: 0.1
 
 hyperparameters:
   batch_size: 32

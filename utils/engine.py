@@ -12,17 +12,23 @@ def train_one_epoch(model, dataloader, loss_fn, optimizer, scheduler, task_cfg, 
     total_loss = []
     
     for batch_idx, data in enumerate(dataloader, start=1):
-        optimizer.zero_grad()
-        
         if task_cfg['object'] == 'train_vae':
+            optimizer.zero_grad()
+            
             x, label = data
             x = x.to(device)           
             label = label.to(device)
             
             x_prime, z, mu, log_var = model(x)
             loss, _, __ = loss_fn(x_prime, x, mu, log_var)
+            
+            total_loss.append(loss.item())
+            loss.backward()
+            optimizer.step()
         
         elif task_cfg['object'] == 'train_vovae':
+            optimizer.zero_grad()
+            
             x, label = data
             x = x.to(device)           
             label = label.to(device)
@@ -31,15 +37,14 @@ def train_one_epoch(model, dataloader, loss_fn, optimizer, scheduler, task_cfg, 
             loss, _, __ = loss_fn(x_prime, x, mu, log_var)
             
             loss += orth_loss
+            
+            total_loss.append(loss.item())
+            loss.backward()
+            optimizer.step()
 
         else:
             raise Exception("Check your task_cfg['object'] configuration")
-        
-        total_loss.append(loss.item())
-        
-        loss.backward()
-        optimizer.step()
-        
+         
         print(f"\rTraining: {100*batch_idx/len(dataloader):.2f}%, Loss: {sum(total_loss)/len(total_loss):.6f}, LR: {scheduler.get_last_lr()[0]:.6f}", end="")
     print()
     

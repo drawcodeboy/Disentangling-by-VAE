@@ -22,7 +22,7 @@ model:
   img_size: [3, 64, 64]
   beta: 6.0
   latent_vec_dim: 128
-  orth_coef: 6.0
+  orth_coef: 0.1
 
 hyperparameters:
   optim: AdamW

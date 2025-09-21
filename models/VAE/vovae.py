@@ -29,7 +29,7 @@ class VOVAE(nn.Module):
             nn.Linear(1, latent_vec_dim) for _ in range(0, self.latent)
         ])
         
-        self.orth_coef = 0.1
+        self.orth_coef = orth_coef
 
     def forward(self, x):
         z, mu, log_var = self.encoder(x)
