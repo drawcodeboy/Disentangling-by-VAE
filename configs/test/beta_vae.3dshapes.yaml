@@ -16,11 +16,11 @@ model:
   name: BetaVAE
   latent: 6
   img_size: [3, 64, 64]
-  beta: 20.0
+  beta: 6.0
 
 hyperparameters:
   batch_size: 32
 
 save:
   weights_path: saved/weights
-  weights_filename: beta_vae.3dshapes.epochs_035.pth
+  weights_filename: beta_vae.3dshapes.epochs_065.pth
