@@ -4,7 +4,7 @@ device: &device cuda:0
 parallel: false
 
 task:
-  object: train_vae
+  object: test_vae
 
 data:
   test:

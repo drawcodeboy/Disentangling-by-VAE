@@ -1,10 +1,10 @@
-title: Test BetaVAE / 3DShapes
+title: Test VO-VAE / 3DShapes
 
 device: &device cuda:0
 parallel: false
 
 task:
-  object: test_vae
+  object: test_vovae
 
 data:
   test:
@@ -13,14 +13,16 @@ data:
     mode: test
 
 model:
-  name: BetaVAE
+  name: VOVAE
   latent: 6
   img_size: [3, 64, 64]
-  beta: 6.0
+  beta: 1.0 # Vanila VAE
+  latent_vec_dim: 128
+  orth_coef: 4.0
 
 hyperparameters:
   batch_size: 32
 
 save:
   weights_path: saved/weights
-  weights_filename: beta_vae.3dshapes.epochs_065.pth
+  weights_filename: vo_vae.3dshapes.epochs_096.pth
