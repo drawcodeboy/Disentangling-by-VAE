@@ -1,4 +1,4 @@
-title: Train VAE / 3DShapes
+title: Test VAE / 3DShapes
 
 device: &device cuda:0
 parallel: false
@@ -7,14 +7,10 @@ task:
   object: train_vae
 
 data:
-  train:
+  test:
     name: shape3d
     root: data/3dshapes
-    mode: train
-  val:
-    name: shape3d
-    root: data/3dshapes
-    mode: val
+    mode: test
 
 model:
   name: VAE
@@ -23,14 +19,8 @@ model:
   beta: 1.0 # Vanila VAE
 
 hyperparameters:
-  optim: AdamW
-  lr: 0.0001
-  weight_decay: 0.001
-  epochs: 100
   batch_size: 32
-  loss_fn: ELBO
 
 save:
-  name: vae.3dshapes
   weights_path: saved/weights
-  loss_path: saved/loss
+  weights_filename: vae.3dshapes.epochs_047.pth
