@@ -1,4 +1,4 @@
-# BetaVO-VAE
+# BeVe-VAE
 * OMS4 Part 1
 ## Environment
 * Python==3.12.4
@@ -19,7 +19,7 @@ VO-VAE (Ours)
 DCI: 0.41714991 (3등)
 MAE: 0.28063354 (1등)
 
-BetaVO-VAE (Ours)
+BetaVO-VAE (Ours) -> BeVe-VAE
 ========RESULT========
 DCI: 0.70328494 (2등)
 MAE: 0.28087640 (2등)
