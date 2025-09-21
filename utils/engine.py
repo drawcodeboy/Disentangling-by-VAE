@@ -21,6 +21,16 @@ def train_one_epoch(model, dataloader, loss_fn, optimizer, scheduler, task_cfg, 
             
             x_prime, z, mu, log_var = model(x)
             loss, _, __ = loss_fn(x_prime, x, mu, log_var)
+        
+        elif task_cfg['object'] == 'train_vovae':
+            x, label = data
+            x = x.to(device)           
+            label = label.to(device)
+            
+            x_prime, z, mu, log_var, orth_loss = model(x)
+            loss, _, __ = loss_fn(x_prime, x, mu, log_var)
+            
+            loss += orth_loss
 
         else:
             raise Exception("Check your task_cfg['object'] configuration")
@@ -48,6 +58,16 @@ def validate(model, dataloader, loss_fn, scheduler, task_cfg, device):
 
             x_prime, z, mu, log_var = model(x)
             loss, _, __ = loss_fn(x_prime, x, mu, log_var)
+        
+        elif task_cfg['object'] == 'train_vovae':
+            x, label = data
+            x = x.to(device)           
+            label = label.to(device)
+            
+            x_prime, z, mu, log_var, orth_loss = model(x)
+            loss, _, __ = loss_fn(x_prime, x, mu, log_var)
+            loss += orth_loss
+        
         else:
             raise Exception("Check your task_cfg['object'] configuration")
         
@@ -75,12 +95,24 @@ def evaluate(model, dataloader, task_cfg, device):
     
     total_x, total_x_prime, total_codes, total_factors = [], [], [], []
     for batch_idx, data in enumerate(dataloader, start=1):
-        if task_cfg['object'] == 'train_vae':
+        if task_cfg['object'] == 'test_vae':
             x, label = data
             x = x.to(device)           
             label = label.to(device)
 
             x_prime, z, mu, log_var = model(x)
+            
+            total_x.append(x.cpu().numpy())
+            total_x_prime.append(x_prime.cpu().numpy())
+            total_codes.append(mu.cpu().numpy()) # z 대신 mu
+            total_factors.append(label.cpu().numpy())
+        
+        elif task_cfg['object'] == 'test_vovae':
+            x, label = data
+            x = x.to(device)           
+            label = label.to(device)
+
+            x_prime, z, mu, log_var, orth_loss = model(x)
             
             total_x.append(x.cpu().numpy())
             total_x_prime.append(x_prime.cpu().numpy())
