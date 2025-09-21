@@ -39,12 +39,14 @@ def validate(model, dataloader, loss_fn, scheduler, task_cfg, device):
     model.eval()
     total_loss = []
     
-    for batch_idx, (x, target) in enumerate(dataloader, start=1):
+    for batch_idx, data in enumerate(dataloader, start=1):
         if task_cfg['object'] == 'train_vae':
             x, label = data
             x = x.to(device)           
             label = label.to(device)
 
+            x_prime, z, mu, log_var = model(x)
+            loss, _, __ = loss_fn(x_prime, x, mu, log_var)
         else:
             raise Exception("Check your task_cfg['object'] configuration")
         
