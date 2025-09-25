@@ -45,8 +45,13 @@ class VOVAE(nn.Module):
         x = self.decoder(z)
         return x, z, mu, log_var, orth_loss
 
-    def sample(self, num_samples, device):
+    def intervention(self, num_samples, device):
+        # 의도적인 intervention
         z = torch.randn((num_samples, self.latent)).to(device)
+        
+        i = 3
+        random = torch.randn((1,)).to(device) * 5.
+        z[0, i] = z[0, i] + random
         
         samples = self.decoder(z)
         

@@ -12,3 +12,8 @@ python subtasks/data_save/exec.py
 * 이에 따라 .h5 파일 내 모든 이미지와 label들을 한 번에 가져오는 것이 필요함.
 * 그래서, NumPy로 샘플 하나씩 저장하여 데이터셋을 재구성하는 방식을 택했고, 위 command를 실행시키면 된다.
 * 또한, 순서는 해당 script에서 랜덤으로 작성하였기 때문에 데이터셋 코드에서 이를 고려할 필요는 없다.
+### 3. intervention
+'''
+python subtasks/intervention/exec.py
+'''
+* GT, Reconstruction, intervention을 모두 이미지로 저장할 수 있는 코드
