@@ -50,7 +50,7 @@ def main(cfg, config):
                       map_location=device, weights_only=False)
     model.load_state_dict(ckpt['model'])
     
-    sample_index = 99
+    sample_index = 0
     x, label = test_ds[sample_index]
     x = rearrange(x, 'c h w -> 1 c h w').to(device)
     

@@ -31,7 +31,7 @@ class VAE(nn.Module):
         z = torch.randn((num_samples, self.latent)).to(device)
         
         i = 3
-        random = torch.randn((1,)).to(device) * 5.
+        random = torch.randn((1,)).to(device) * 3.
         z[0, i] = z[0, i] + random
         
         samples = self.decoder(z)

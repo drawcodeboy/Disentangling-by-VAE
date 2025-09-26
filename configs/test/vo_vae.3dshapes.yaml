@@ -25,4 +25,4 @@ hyperparameters:
 
 save:
   weights_path: saved/weights
-  weights_filename: vo_vae.3dshapes.epochs_096.pth
+  weights_filename: vo_vae.3dshapes.epochs_100.pth

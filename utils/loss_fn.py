@@ -14,7 +14,10 @@ class ELBO(nn.Module):
         first_term = -0.5 * torch.sum(1 + log_var - mu.pow(2) - log_var.exp(), dim=1).mean()
         
         # 2) Reconstruction
-        second_term = F.mse_loss(x_prime, x)
+        # second_term = F.mse_loss(x_prime, x)
+        n = x.size(0)
+        second_term = F.binary_cross_entropy_with_logits(x_prime, x, reduction='sum') / n
+        # second_term = F.l1_loss()
         
         minus_elbo = self.beta * first_term + second_term
         
