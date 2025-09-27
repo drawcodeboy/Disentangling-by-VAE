@@ -16,7 +16,7 @@ model:
   name: VOVAE
   latent: 6
   img_size: [3, 64, 64]
-  beta: 3.0
+  beta: 6.0
   latent_vec_dim: 128
   orth_coef: 0.1
 
