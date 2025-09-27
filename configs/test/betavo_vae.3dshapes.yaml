@@ -16,7 +16,7 @@ model:
   name: VOVAE
   latent: 6
   img_size: [3, 64, 64]
-  beta: 2.0
+  beta: 3.0
   latent_vec_dim: 128
   orth_coef: 0.1
 
@@ -25,4 +25,4 @@ hyperparameters:
 
 save:
   weights_path: saved/weights
-  weights_filename: betavo_vae.3dshapes.epochs_099.pth
+  weights_filename: betavo_vae.3dshapes.epochs_100.pth

@@ -20,7 +20,7 @@ model:
   name: VOVAE
   latent: 6
   img_size: [3, 64, 64]
-  beta: 2.0 # Vanila VAE
+  beta: 1.0 # Vanila VAE
   latent_vec_dim: 128
   orth_coef: 0.1
 
