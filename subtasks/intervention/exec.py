@@ -56,10 +56,14 @@ def main(cfg, config):
     
     if task_cfg['object'] == 'test_vovae':
         x_prime, z, mu, log_var, orth_loss = model(x)
-        x_inter = model.intervention(1, device)
+        x_inter = model.intervention(num_samples=1, 
+                                     z=z,
+                                     device=device)
     else:
         x_prime, z, mu, log_var = model(x)
-        x_inter = model.intervention(1, device)
+        x_inter = model.intervention(num_samples=1, 
+                                     z=z,
+                                     device=device)
     
     x = x.cpu().detach().numpy()
     x_prime = x_prime.cpu().detach().numpy()

@@ -26,9 +26,8 @@ class VAE(nn.Module):
         x = self.decoder(z)
         return x, z, mu, log_var
 
-    def intervention(self, num_samples, device):
+    def intervention(self, num_samples, z, device):
         # 의도적인 intervention
-        z = torch.randn((num_samples, self.latent)).to(device)
         
         i = 3
         random = torch.randn((1,)).to(device) * 3.
