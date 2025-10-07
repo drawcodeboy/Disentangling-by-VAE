@@ -54,16 +54,10 @@ def main(cfg, config):
     x, label = test_ds[sample_index]
     x = rearrange(x, 'c h w -> 1 c h w').to(device)
     
-    if task_cfg['object'] == 'test_vovae':
-        x_prime, z, mu, log_var, orth_loss = model(x)
-        x_inter = model.intervention(num_samples=1, 
-                                     z=z,
-                                     device=device)
-    else:
-        x_prime, z, mu, log_var = model(x)
-        x_inter = model.intervention(num_samples=1, 
-                                     z=z,
-                                     device=device)
+    x_prime, z, mu, log_var = model(x)
+    x_inter = model.intervention(num_samples=1, 
+                                 z=z,
+                                 device=device)
     
     x = x.cpu().detach().numpy()
     x_prime = x_prime.cpu().detach().numpy()
