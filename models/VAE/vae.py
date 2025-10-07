@@ -6,6 +6,7 @@ from torch import nn
 
 from einops import rearrange
 from typing import List, Tuple
+import numpy as np
 
 class VAE(nn.Module):
     def __init__(self,
@@ -29,7 +30,7 @@ class VAE(nn.Module):
     def intervention(self, num_samples, z, device):
         # 의도적인 intervention
         
-        i = 3
+        i = np.random.randint(0, 6)
         random = torch.randn((1,)).to(device) * 3.
         z[0, i] = z[0, i] + random
         

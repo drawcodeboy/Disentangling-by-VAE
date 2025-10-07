@@ -4,6 +4,7 @@ from torch import nn
 from typing import List, Tuple
 
 from einops import rearrange
+import torch.nn.functional as F
 
 class Decoder(nn.Module):
     def __init__(self,
@@ -37,5 +38,8 @@ class Decoder(nn.Module):
         
         for block in self.block_li:
             x = block(x)
-            
+        
+        # Sigmoid 쓰지 말 것, 가운데 몰림 현상 때문인지 결과가 뿌옇게 나옴
+        # x = F.sigmoid(x)
+        
         return x
