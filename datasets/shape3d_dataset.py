@@ -69,36 +69,3 @@ class Shape3DDataset(Dataset):
     def from_config(cls, cfg):
         return cls(root=cfg['root'],
                    mode=cfg['mode'])
-
-# Check random seed application
-# ds = Shape3DDataset()
-# print(ds.data_li[0])
-
-# Check label scale
-# ds = Shape3DDataset()
-# print(ds[0][1])
-
-# Check dataset size
-# ds = Shape3DDataset(mode='train')
-# train_len = len(ds)
-# ds = Shape3DDataset(mode='val')
-# val_len = len(ds)
-# ds = Shape3DDataset(mode='test')
-# test_len = len(ds)
-# print(train_len + val_len + test_len)
-
-# Check dataset image size
-# ds = Shape3DDataset()
-# image, label = ds[0]
-# print(image.shape)
-
-# from torch.utils.data import DataLoader
-# import time
-# ds = Shape3DDataset()
-# dl = DataLoader(ds, shuffle=True, batch_size=32, drop_last=True, num_workers=16)
-
-# start_time = time.time()
-# next(iter(dl))
-# elapsed_time = time.time() - start_time
-
-# print(elapsed_time)

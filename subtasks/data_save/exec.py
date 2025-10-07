@@ -18,7 +18,7 @@ arr = np.arange(0, 480000)
 np.random.seed(42)
 np.random.shuffle(arr)
 
-data_num = 10000 # 필요한 데이터의 수
+data_num = 20000 # 필요한 데이터의 수
 arr = arr[:data_num]
 
 for i, random_index in enumerate(arr):
