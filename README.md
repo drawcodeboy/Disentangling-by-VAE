@@ -1,6 +1,6 @@
 # Disentangling by VAE
-* Disentangled Representation Learning VAE Repository
-* VAE, Beta-VAE are available.
+* <b>Disentangled Representation Learning</b> by VAE Repository
+* <b>VAE, Beta-VAE</b> are available.
 
 # Preview
 <table align="center">
