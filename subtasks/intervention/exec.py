@@ -50,7 +50,8 @@ def main(cfg, config):
                       map_location=device, weights_only=False)
     model.load_state_dict(ckpt['model'])
     
-    sample_index = 0
+    sample_index = np.random.randint(0, len(test_ds))
+    print(f"sample index: {sample_index}")
     x, label = test_ds[sample_index]
     x = rearrange(x, 'c h w -> 1 c h w').to(device)
     
@@ -62,6 +63,12 @@ def main(cfg, config):
     x = x.cpu().detach().numpy()
     x_prime = x_prime.cpu().detach().numpy()
     x_inter = x_inter.cpu().detach().numpy()
+
+    # print(x.min(), x.max(), x.mean())
+    # print(x_prime.min(), x_prime.max(), x_prime.mean())
+    x_prime = np.clip(x_prime, 0., 1.) # 픽셀 값이 튀어서 결과 이상하게 나옴, 이 제약을 필요로 함.
+    # print(x_inter.min(), x_inter.max(), x_inter.mean())
+    x_inter = np.clip(x_inter, 0., 1.) # 픽셀 값이 튀어서 결과 이상하게 나옴, 이 제약을 필요로 함.
     
     x = (np.transpose(x[0], (1, 2, 0)) * 255.).astype(np.uint8)
     x_prime = (np.transpose(x_prime[0], (1, 2, 0)) * 255.).astype(np.uint8)
