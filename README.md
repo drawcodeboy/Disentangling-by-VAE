@@ -3,15 +3,22 @@
 * VAE, Beta-VAE are available.
 
 # Preview
-<p align="center">
-  <table>
-    <tr>
-      <td align="center"><img src="assets/intervention/vae_GT.jpg" width="200"><br><em>Ground Truth</em></td>
-      <td align="center"><img src="assets/intervention/vae_reconstruction.jpg" width="200"><br><em>Reconstruction</em></td>
-      <td align="center"><img src="assets/intervention/vae_intervention.jpg" width="200"><br><em>Intervention (wall)</em></td>
-    </tr>
-  </table>
-</p>
+<table align="center">
+  <tr>
+    <td align="center">
+      <img src="assets/intervention/vae_GT.jpg" width="200"><br>
+      <em>Ground Truth</em>
+    </td>
+    <td align="center">
+      <img src="assets/intervention/vae_reconstruction.jpg" width="200"><br>
+      <em>Reconstruction</em>
+    </td>
+    <td align="center">
+      <img src="assets/intervention/vae_intervention.jpg" width="200"><br>
+      <em>Intervention (Wall)</em>
+    </td>
+  </tr>
+</table>
 
 
 # How to use
