@@ -81,7 +81,7 @@ def main(cfg):
     total_train_loss = []
     total_start_time = int(time.time())
     
-    min_loss = 1e4
+    min_loss = 1e10
     
     for current_epoch in range(1, hp_cfg['epochs']+1):
         print("=======================================================")
