@@ -2,6 +2,18 @@
 * Disentangled Representation Learning VAE Repository
 * VAE, Beta-VAE are available.
 
+# Preview
+<p align="center">
+  <table>
+    <tr>
+      <td align="center"><img src="assets/intervention/vae_GT.jpg" width="200"><br><em>Ground Truth</em></td>
+      <td align="center"><img src="assets/intervention/vae_reconstruction.jpg" width="200"><br><em>Reconstruction</em></td>
+      <td align="center"><img src="assets/intervention/vae_intervention.jpg" width="200"><br><em>Intervention (wall)</em></td>
+    </tr>
+  </table>
+</p>
+
+
 # How to use
 ### 1. Setings
 * Download dataset here > <a href="https://github.com/google-deepmind/3d-shapes">Google Deepmind: 3D Shapes</a>
