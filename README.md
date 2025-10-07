@@ -3,6 +3,9 @@
 * <b>VAE, Beta-VAE</b> are available.
 
 # Preview
+* The image below shows the result of the VAE after 100 epochs.
+* By training for more epochs and using a Beta-VAE, you can obtain more effective results.
+
 <table align="center">
   <tr>
     <td align="center">
