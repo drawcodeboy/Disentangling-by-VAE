@@ -1,10 +1,16 @@
 # Disentangling by VAE
-* <b>Disentangled Representation Learning</b> by VAE Repository
+* <b>Disentangled Representation Learning(DRL)</b> by VAE Repository
 * <b>VAE, Beta-VAE</b> are available.
+* This repository helps you understand how to implement DRL with a VAE.
+* I hope you can use this repository as a tutorial.
+* If you find anything strange, please report it through Issues or send me an email (dobylive01@gmail.com
+).
 
 # Preview
+
 * The image below shows the result of the VAE after 100 epochs.
 * By training for more epochs and using a Beta-VAE, you can obtain more effective results.
+* VAE Results - DCI (Disentanglement): 0.327, MAE (Reconstruction): 0.037
 
 <table align="center">
   <tr>
@@ -22,7 +28,6 @@
     </td>
   </tr>
 </table>
-
 
 # How to use
 ### 1. Setings
