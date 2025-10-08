@@ -18,7 +18,7 @@
     </td>
     <td align="center">
       <img src="assets/intervention/vae_intervention.jpg" width="200"><br>
-      <em>Intervention (Wall)</em>
+      <em>Intervention (wall hue)</em>
     </td>
   </tr>
 </table>
